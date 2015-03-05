@@ -1,0 +1,13 @@
+-- @atlcompiler emftvm
+module DeleteBindingsWithoutReferredVariable;
+create OUT : ATL refining IN : ATL;
+
+rule DeleteAssociatedBinding {
+ from
+  b : ATL!Binding
+  (
+   b.value.oclIsTypeOf(ATL!VariableExp) and b.value.referredVariable.oclIsUndefined()
+  )
+ to
+  
+}

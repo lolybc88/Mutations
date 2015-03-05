@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:atl="http://www.eclipse.org/gmt/2005/ATL" xmlns:ocl="http://www.eclipse.org/gmt/2005/OCL">
+  <atl:Module location="2:1-9:2" name="DeleteBindingsWithoutReferredVariable" isRefining="true">
+    <commentsBefore>-- @atlcompiler emftvm</commentsBefore>
+    <inModels location="3:27-3:35" name="IN" metamodel="/1"/>
+    <outModels location="3:8-3:17" name="OUT" metamodel="/1"/>
+    <elements xsi:type="atl:MatchedRule" location="5:1-9:2" name="DeleteAssociatedBinding">
+      <outPattern location="8:2-8:4"/>
+      <inPattern location="6:2-7:103">
+        <elements xsi:type="atl:SimpleInPatternElement" location="7:3-7:18" varName="b" variableExp="/0/@elements.0/@inPattern/@filter/@source/@source/@source /0/@elements.0/@inPattern/@filter/@arguments.0/@source/@source/@source">
+          <type xsi:type="ocl:OclModelElement" location="7:7-7:18" name="Binding" model="/1"/>
+        </elements>
+        <filter xsi:type="ocl:OperatorCallExp" location="7:20-7:102" operationName="and">
+          <source xsi:type="ocl:OperationCallExp" location="7:20-7:56" operationName="oclIsTypeOf">
+            <source xsi:type="ocl:NavigationOrAttributeCallExp" location="7:20-7:27" name="value">
+              <source xsi:type="ocl:VariableExp" location="7:20-7:21" referredVariable="/0/@elements.0/@inPattern/@elements.0"/>
+            </source>
+            <arguments xsi:type="ocl:OclModelElement" location="7:40-7:55" name="VariableExp" model="/1"/>
+          </source>
+          <arguments xsi:type="ocl:OperationCallExp" location="7:61-7:102" operationName="oclIsUndefined">
+            <source xsi:type="ocl:NavigationOrAttributeCallExp" location="7:61-7:85" name="referredVariable">
+              <source xsi:type="ocl:NavigationOrAttributeCallExp" location="7:61-7:68" name="value">
+                <source xsi:type="ocl:VariableExp" location="7:61-7:62" referredVariable="/0/@elements.0/@inPattern/@elements.0"/>
+              </source>
+            </source>
+          </arguments>
+        </filter>
+      </inPattern>
+    </elements>
+  </atl:Module>
+  <ocl:OclModel location="3:14-3:17" name="ATL" elements="/0/@elements.0/@inPattern/@elements.0/@type /0/@elements.0/@inPattern/@filter/@source/@arguments.0" model="/0/@outModels.0 /0/@inModels.0"/>
+</xmi:XMI>

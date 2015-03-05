@@ -1,0 +1,15 @@
+-- @atlcompiler emftvm
+
+module CompleteClassNames;
+create OUT : ATL refining IN : ATL, IN_MM : IN_MM, OUT_MM : OUT_MM;
+
+-- A StringExp is one of the types that can conform to the value part of a Binding
+-- Since the generic mutation transformation adds 'CompleteIt_IM' in the value part,
+-- a StringExp is created, whose stringSymbol is 'CompleteIt_IM'
+rule CompleteInMMNames {
+	from s : ATL!StringExp (s.stringSymbol = 'CompleteIt_IM')
+	to t : ATL!StringExp(
+		-- The idea is to have in the following a random class from the input model
+		stringSymbol <- IN_MM!EClass.allInstancesFrom('IN_MM')->select(c|not c.abstract)->first().name	
+	)
+}

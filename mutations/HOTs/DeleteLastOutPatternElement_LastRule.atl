@@ -1,0 +1,20 @@
+-- @atlcompiler emftvm
+module DeleteLastOutPatternElement_LastRule;
+create OUT : ATL refining IN : ATL;
+
+rule DeleteLastOutPatternElement_LastRule {
+ from
+  ope : ATL!OutPatternElement
+  (
+   ope = ope.outPattern.elements -> last() and --It is the last OutPatternElement
+   ope.outPattern.rule = ope.outPattern.rule.module.elements -> last() -- of the last rule
+  )
+ to
+}
+
+rule DeleteAssociatedBinding{
+	from
+	 b : ATL!Binding (b.value.oclIsTypeOf(ATL!VariableExp) and b.value.referredVariable.oclIsUndefined())
+	to
+}
+
